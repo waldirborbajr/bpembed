@@ -24,3 +24,5 @@ Given a version number MAJOR.MINOR.PATCH, increment the:
 `MINOR` version when you add functionality in a backwards compatible manner
 `PATCH` version when you make backwards compatible bug fixes
 Additional labels for pre-release and build metadata are available as extensions to the MAJOR.MINOR.PATCH format.
+
+<img src="https://github.com/waldirborbajr/bpembed/blob/main/assets/version.png" width=25% height=25%>
