@@ -1,15 +1,23 @@
 package bpembed
 
 import (
-	"io/ioutil"
-	"log"
+	"bufio"
+	"os"
 )
 
-func BPEmbed(filename string) (string){
+func BPEmbed(filename string) string {
 
-	file, err := ioutil.ReadFile(filename)
+	file, err := os.Open(filename)
 	if err != nil {
-		log.Fatalf("Error opening file %s", err.Error())
+		if os.IsNotExist(err) {
+			return "NotExists"
+		}
 	}
-	return string(file)
+	defer file.Close()
+
+	scanner := bufio.NewScanner(file)
+	for scanner.Scan() {
+		return scanner.Text()
+	}
+	return ""
 }

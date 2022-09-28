@@ -13,7 +13,7 @@ func TestNotExpectedContent(t *testing.T) {
 
 	outputContent := bpembed.BPEmbed("test.txt")
 
-	assert.Equal(t, expectedContent, outputContent)
+	assert.NotEqual(t, expectedContent, outputContent)
 
 }
 
@@ -23,6 +23,16 @@ func TestExpectedContent(t *testing.T) {
 
 	outputContent := bpembed.BPEmbed("test.txt")
 
-	assert.NotEqual(t, expectedContent, outputContent)
+	assert.Equal(t, expectedContent, outputContent)
+
+}
+
+func TestFileNotFound(t *testing.T) {
+
+	expectedContent := "NotExists"
+
+	outputContent := bpembed.BPEmbed("nonexists.yaml")
+
+	assert.Contains(t, expectedContent, outputContent)
 
 }
